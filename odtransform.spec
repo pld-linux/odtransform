@@ -1,10 +1,8 @@
 # TODO:
 # - shell wrapper
 
-%include	/usr/lib/rpm/macros.java
-
 %define		snap	19
-
+%include	/usr/lib/rpm/macros.java
 Summary:	OpenDocument to XML FOP converter
 Name:		odtransform
 Version:	0.1.0
@@ -42,8 +40,6 @@ fop.
 %setup -q -n %{name}-%{version}-r%{snap}
 
 %build
-export JAVA_HOME="%{java_home}"
-
 required_jars="commons-logging log4j jaxp_parser_impl xalan"
 CLASSPATH=$(build-classpath $required_jars)
 export CLASSPATH
