@@ -8,7 +8,7 @@
 Summary:	OpenDocument to XML FOP converter
 Name:		odtransform
 Version:	0.1.0
-Release:	0.%{snap}
+Release:	0.%{snap}.1
 License:	Apache v2.0
 Group:		Development/Languages/Java
 Source0:	%{name}-%{version}-r%{snap}.tar.bz2
