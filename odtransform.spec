@@ -44,7 +44,7 @@ fop.
 %build
 export JAVA_HOME="%{java_home}"
 
-required_jars="commons-logging log4j xerces-j2 xalan"
+required_jars="commons-logging log4j jaxp_parser_impl xalan"
 CLASSPATH=$(build-classpath $required_jars)
 export CLASSPATH
 javac -cp $CLASSPATH main/java/org/clazzes/odtransform/*.java
