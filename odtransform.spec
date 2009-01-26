@@ -47,12 +47,12 @@ export JAVA_HOME="%{java_home}"
 required_jars="commons-logging log4j jaxp_parser_impl xalan"
 CLASSPATH=$(build-classpath $required_jars)
 export CLASSPATH
-javac -cp $CLASSPATH main/java/org/clazzes/odtransform/*.java
+%javac main/java/org/clazzes/odtransform/*.java
 cd main/java
-jar cf ../../odtransform-%{version}.jar org/clazzes/odtransform/*.class
+%jar cf ../../odtransform-%{version}.jar org/clazzes/odtransform/*.class
 cd ../resources
-jar uf ../../odtransform-%{version}.jar org/clazzes/odtransform/*.xslt
-jar uef org.clazzes.odtransform.OdtTransform ../../odtransform-%{version}.jar
+%jar uf ../../odtransform-%{version}.jar org/clazzes/odtransform/*.xslt
+%jar uef org.clazzes.odtransform.OdtTransform ../../odtransform-%{version}.jar
 
 %install
 rm -rf $RPM_BUILD_ROOT
