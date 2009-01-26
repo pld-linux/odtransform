@@ -14,12 +14,6 @@ Group:		Development/Languages/Java
 Source0:	%{name}-%{version}-r%{snap}.tar.bz2
 # Source0-md5:	f3826fb376dc6b89c58a2347b652383c
 URL:		http://svn.clazzes.org/svn/odtransform/
-Requires:	java-commons-logging
-Requires:	jre
-Requires:	jpackage-utils
-Requires:	logging-log4j
-Requires:	xalan-j
-Requires:	xerces-j
 BuildRequires:	jar
 BuildRequires:	java-commons-logging
 BuildRequires:	jdk
@@ -29,7 +23,12 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	xalan-j
 BuildRequires:	xerces-j
+Requires:	java-commons-logging
 Requires:	jpackage-utils
+Requires:	jre
+Requires:	logging-log4j
+Requires:	xalan-j
+Requires:	xerces-j
 Suggests:	fop
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
