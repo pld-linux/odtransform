@@ -11,6 +11,7 @@ License:	Apache v2.0
 Group:		Development/Languages/Java
 Source0:	%{name}-%{version}-r%{snap}.tar.bz2
 # Source0-md5:	e040305ffa4ed336711536d6cf092831
+Source1:	%{name}.sh
 URL:		http://svn.clazzes.org/svn/odtransform/
 BuildRequires:	jar
 BuildRequires:	java-commons-logging
@@ -52,13 +53,15 @@ cd ../resources
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_javadir},%{_datadir}/odtransform}
+install -d $RPM_BUILD_ROOT{%{_javadir},%{_datadir}/odtransform,%{_bindir}}
 
 # jars
 cp -a %{name}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-%{version}.jar
 ln -s %{name}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}.jar
 
 cp conf/log4j*.properties $RPM_BUILD_ROOT%{_datadir}/odtransform
+
+install %SOURCE1 $RPM_BUILD_ROOT%{_bindir}/odtransform
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -67,3 +70,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_datadir}/odtransform
 %{_javadir}/*.jar
+%attr(755,root,root) %{_bindir}/odtransform
