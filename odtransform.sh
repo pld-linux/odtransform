@@ -41,8 +41,9 @@ do
         ;;
     --help)
     	usage()
-	break;
-    * )
+	exit
+	;;
+    *)
         break
         ;;
     esac
