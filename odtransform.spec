@@ -61,7 +61,7 @@ ln -s %{name}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}.jar
 
 cp conf/log4j*.properties $RPM_BUILD_ROOT%{_datadir}/odtransform
 
-install %SOURCE1 $RPM_BUILD_ROOT%{_bindir}/odtransform
+install %{SOURCE1} $RPM_BUILD_ROOT%{_bindir}/odtransform
 
 %clean
 rm -rf $RPM_BUILD_ROOT
