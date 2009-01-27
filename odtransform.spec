@@ -12,6 +12,7 @@ Group:		Development/Languages/Java
 Source0:	%{name}-%{version}-r%{snap}.tar.bz2
 # Source0-md5:	e040305ffa4ed336711536d6cf092831
 Source1:	%{name}.sh
+Source2:	%{name}-ooo2xslfo.xslt
 URL:		http://svn.clazzes.org/svn/odtransform/
 BuildRequires:	jar
 BuildRequires:	java-commons-logging
@@ -62,6 +63,7 @@ ln -s %{name}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}.jar
 cp conf/log4j*.properties $RPM_BUILD_ROOT%{_datadir}/odtransform
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_bindir}/odtransform
+install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/odtransform/ooo2xslfo.xslt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
