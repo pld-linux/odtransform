@@ -19,7 +19,11 @@ DEBUG=0
 usage() {
 	cat << EOF
 odtversion rev 19
-Usage: $0 [stylesheet] [OpenDocument]
+Usage: $0 [stylesheet] [OpenDocument]    - apply stylesheet to OpenDocument
+       $0 [OpenDocument]                 - convert OpenDocument to XML-FOP
+Example:
+       Convert OpenDocument to PDF file:
+       $0 document.odt | fop /dev/sdtin file.pdf
 EOF
 }
 
@@ -42,21 +46,44 @@ while [ $# -ge 1 ]; do
         shift
         ;;
     --help)
-    	usage()
-		exit
-		;;
+odtransform.sh
+    	usage
+	exit 0
+	;;
     *)
         break
         ;;
     esac
 done
 
+if [ "$#" == 2 ]; then
+  STYLESHEET=$1
+  shift 1
+else
+  STYLESHEET=/usr/share/odtransform/ooo2xslfo.xslt
+fi
+
+if [ "$#" -ne "1" ]; then
+  usage
+  exit 1
+fi
+
 CLASSPATH=$(build-classpath commons-logging log4j jaxp_parser_impl xalan odtransform)
+
+if ! [ -r $STYLESHEET ]; then
+  echo "Could not open $STYLESHEET file" >&2
+  exit 1
+fi
+
+if ! [ -r $1 ]; then
+  echo "Could not open $1 file" >&2
+  exit 1
+fi
 
 if [ $DEBUG != 0 ]; then
     echo '*****************************************************'
-    echo $JAVA_CMD -Dlog4j.configuration=file:$LOG4JPROPS -cp $CLASSPATH org.clazzes.odtransform.OdtTransform ${1:+"$@"}
+    echo $JAVA_CMD -Dlog4j.configuration=file:$LOG4JPROPS -cp $CLASSPATH org.clazzes.odtransform.OdtTransform $STYLESHEET ${1:+"$@"}
     echo '*****************************************************'
 fi
 
-$JAVA_CMD -Dlog4j.configuration=file:$LOG4JPROPS -cp $CLASSPATH org.clazzes.odtransform.OdtTransform ${1:+"$@"}
+$JAVA_CMD -Dlog4j.configuration=file:$LOG4JPROPS -cp $CLASSPATH org.clazzes.odtransform.OdtTransform $STYLESHEET ${1:+"$@"}
