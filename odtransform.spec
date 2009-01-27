@@ -12,6 +12,7 @@ Group:		Development/Languages/Java
 Source0:	%{name}-%{version}-r%{snap}.tar.bz2
 # Source0-md5:	e040305ffa4ed336711536d6cf092831
 Source1:	%{name}.sh
+# Source2 url: http://svn.clazzes.org/svn/ooo2xslfo/trunk/ooo2xslfo/src/main/resources/de/systemconcept/ooo/ooo2xslfo.xslt
 Source2:	%{name}-ooo2xslfo.xslt
 URL:		http://svn.clazzes.org/svn/odtransform/
 BuildRequires:	jar
