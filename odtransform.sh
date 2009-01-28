@@ -6,10 +6,14 @@
 # from subversion repository:
 # http://svn.clazzes.org/svn/odtransform/trunk/odtransform/src/main/assembly/odtransform.sh
 
-if test "$JAVA_HOME" = ""; then
-  JAVA_CMD=java
+if [ -x /usr/bin/gij ]; then
+  JAVA_CMD=gij
 else
-  JAVA_CMD=$JAVA_HOME/bin/java
+  if [ "$JAVA_HOME" = "" ]; then
+    JAVA_CMD=java
+  else
+    JAVA_CMD=$JAVA_HOME/bin/java
+  fi
 fi
 
 LOG4JPROPS=/usr/share/odtransform/log4j.properties
@@ -68,7 +72,7 @@ if [ "$#" -ne "1" ]; then
   exit 1
 fi
 
-CLASSPATH=$(build-classpath commons-logging log4j jaxp_parser_impl xalan odtransform)
+CLASSPATH=$(build-classpath commons-logging xalan odtransform)
 
 if ! [ -r $STYLESHEET ]; then
   echo "Could not open $STYLESHEET file" >&2
