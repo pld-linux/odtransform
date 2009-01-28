@@ -17,19 +17,14 @@ Source2:	%{name}-ooo2xslfo.xslt
 URL:		http://svn.clazzes.org/svn/odtransform/
 BuildRequires:	jar
 BuildRequires:	java-commons-logging
-BuildRequires:	jdk
+BuildRequires:	gcj
 BuildRequires:	jpackage-utils
-BuildRequires:	logging-log4j
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
-BuildRequires:	xalan-j
-BuildRequires:	xerces-j
 Requires:	java-commons-logging
 Requires:	jpackage-utils
-Requires:	jre
-Requires:	logging-log4j
+# Yes, it is R but it is not BR
 Requires:	xalan-j
-Requires:	xerces-j
 Suggests:	fop
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -43,10 +38,10 @@ fop.
 %setup -q -n %{name}-%{version}-r%{snap}
 
 %build
-required_jars="commons-logging log4j jaxp_parser_impl xalan"
+required_jars="commons-logging"
 CLASSPATH=$(build-classpath $required_jars)
 export CLASSPATH
-%javac main/java/org/clazzes/odtransform/*.java
+gcj -C main/java/org/clazzes/odtransform/*.java
 cd main/java
 %jar cf ../../odtransform-%{version}.jar org/clazzes/odtransform/*.class
 cd ../resources
