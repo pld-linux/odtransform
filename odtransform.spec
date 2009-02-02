@@ -4,6 +4,7 @@
 %define		snap	19
 %include	/usr/lib/rpm/macros.java
 Summary:	OpenDocument to XML FOP converter
+Summary(pl.UTF-8):	Konwerter plików OpenDocument do formatu XML FOP
 Name:		odtransform
 Version:	0.1.0
 Release:	0.%{snap}.1
@@ -15,24 +16,30 @@ Source1:	%{name}.sh
 # Source2 url: http://svn.clazzes.org/svn/ooo2xslfo/trunk/ooo2xslfo/src/main/resources/de/systemconcept/ooo/ooo2xslfo.xslt
 Source2:	%{name}-ooo2xslfo.xslt
 URL:		http://svn.clazzes.org/svn/odtransform/
+BuildRequires:	gcj
 BuildRequires:	jar
 BuildRequires:	java-commons-logging
-BuildRequires:	gcj
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	java-commons-logging
 Requires:	jpackage-utils
-# Yes, it is R but it is not BR
 Requires:	xalan-j
 Suggests:	fop
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+# Yes, it is R but it is not BR
 
 %description
 A simple java tool for converting OpenDocument files to XML FOP files
 that can be easily converted to various formats like ps or pdf using
 fop.
+
+%description -l pl.UTF-8
+Proste narzędzie napisane w javie, służące do konwersji plików w
+formacie OpecDocument do plików XML FOP. Pliki wynikowe można
+przekonwertować do wielu różnych formatów, między innymi PDF, PS,
+czysty tekst, używając programu fop.
 
 %prep
 %setup -q -n %{name}-%{version}-r%{snap}
