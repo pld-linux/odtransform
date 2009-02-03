@@ -31,15 +31,15 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 # Yes, it is R but it is not BR
 
 %description
-A simple java tool for converting OpenDocument files to XML FOP files
-that can be easily converted to various formats like ps or pdf using
+A simple Java tool for converting OpenDocument files to XML FOP files
+that can be easily converted to various formats like PS or PDF using
 fop.
 
 %description -l pl.UTF-8
-Proste narzędzie napisane w javie, służące do konwersji plików w
-formacie OpecDocument do plików XML FOP. Pliki wynikowe można
-przekonwertować do wielu różnych formatów, między innymi PDF, PS,
-czysty tekst, używając programu fop.
+Proste, napisane w Javie narzędzie służące do konwersji plików w
+formacie OpenDocument do plików XML FOP. Pliki wynikowe można
+przekonwertować do wielu różnych formatów (jak PS czy PD) przy użyciu
+programu fop.
 
 %prep
 %setup -q -n %{name}-%{version}-r%{snap}
