@@ -1,5 +1,3 @@
-# TODO:
-# - shell wrapper
 
 %define		snap	19
 %include	/usr/lib/rpm/macros.java
