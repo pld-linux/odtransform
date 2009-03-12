@@ -15,6 +15,7 @@ Source0:	%{name}-%{version}-r%{snap}.tar.bz2
 Source1:	%{name}.sh
 # Source2 url: http://svn.clazzes.org/svn/ooo2xslfo/trunk/ooo2xslfo/src/main/resources/de/systemconcept/ooo/ooo2xslfo.xslt
 Source2:	%{name}-ooo2xslfo.xslt
+Source3:	%{name}.mf
 URL:		http://svn.clazzes.org/svn/odtransform/
 BuildRequires:	gcj
 BuildRequires:	jar
@@ -24,11 +25,11 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	java-commons-logging
 Requires:	jpackage-utils
+# Yes, it is R but it is not BR
 Requires:	xalan-j
 Suggests:	fop
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-# Yes, it is R but it is not BR
 
 %description
 A simple Java tool for converting OpenDocument files to XML FOP files
@@ -53,7 +54,7 @@ cd main/java
 %jar cf ../../odtransform-%{version}.jar org/clazzes/odtransform/*.class
 cd ../resources
 %jar uf ../../odtransform-%{version}.jar org/clazzes/odtransform/*.xslt
-%jar uef org.clazzes.odtransform.OdtTransform ../../odtransform-%{version}.jar
+%jar -um %SOURCE3 -f ../../odtransform-%{version}.jar
 
 %install
 rm -rf $RPM_BUILD_ROOT
