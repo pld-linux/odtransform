@@ -54,7 +54,7 @@ cd main/java
 %jar cf ../../odtransform-%{version}.jar org/clazzes/odtransform/*.class
 cd ../resources
 %jar uf ../../odtransform-%{version}.jar org/clazzes/odtransform/*.xslt
-%jar -um %SOURCE3 -f ../../odtransform-%{version}.jar
+%jar -um %{SOURCE3} -f ../../odtransform-%{version}.jar
 
 %install
 rm -rf $RPM_BUILD_ROOT
