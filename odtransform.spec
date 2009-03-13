@@ -1,4 +1,4 @@
-
+%bcond_with	java_sun
 %define		snap	19
 %include	/usr/lib/rpm/macros.java
 Summary:	OpenDocument to XML FOP converter
@@ -15,9 +15,10 @@ Source1:	%{name}.sh
 Source2:	%{name}-ooo2xslfo.xslt
 Source3:	%{name}.mf
 URL:		http://svn.clazzes.org/svn/odtransform/
-BuildRequires:	gcj
 BuildRequires:	jar
 BuildRequires:	java-commons-logging
+%{?without_java_sun:BuildRequires:	java-gcj-compat-devel}
+%{?with_java_sun:BuildRequires:	java-sun >= 1.5}
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
@@ -46,8 +47,7 @@ programu fop.
 %build
 required_jars="commons-logging"
 CLASSPATH=$(build-classpath $required_jars)
-export CLASSPATH
-gcj -C main/java/org/clazzes/odtransform/*.java
+%javac -cp $CLASSPATH -source '1.5' -target '1.5' main/java/org/clazzes/odtransform/*.java
 cd main/java
 %jar cf ../../odtransform-%{version}.jar org/clazzes/odtransform/*.class
 cd ../resources
