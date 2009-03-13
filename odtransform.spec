@@ -17,7 +17,7 @@ Source3:	%{name}.mf
 URL:		http://svn.clazzes.org/svn/odtransform/
 BuildRequires:	jar
 BuildRequires:	java-commons-logging
-%{?without_java_sun:BuildRequires:	java-gcj-compat-devel}
+%{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
 %{?with_java_sun:BuildRequires:	java-sun >= 1.5}
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
