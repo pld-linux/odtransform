@@ -1,4 +1,7 @@
-%bcond_with	java_sun
+#
+# Conditional build:
+%bcond_with	java_sun	# use Sun JDK
+#
 %define		snap	19
 %include	/usr/lib/rpm/macros.java
 Summary:	OpenDocument to XML FOP converter
