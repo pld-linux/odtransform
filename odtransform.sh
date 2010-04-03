@@ -78,7 +78,7 @@ if ! [ -r $STYLESHEET ]; then
   exit 1
 fi
 
-if ! [ -r $1 ]; then
+if ! [ -r "$1" ]; then
   echo "Could not open $1 file" >&2
   exit 1
 fi
