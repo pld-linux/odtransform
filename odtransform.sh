@@ -50,7 +50,6 @@ while [ $# -ge 1 ]; do
         shift
         ;;
     --help)
-odtransform.sh
     	usage
 	exit 0
 	;;
@@ -90,4 +89,4 @@ if [ $DEBUG != 0 ]; then
     echo '*****************************************************'
 fi
 
-$JAVA_CMD -Dlog4j.configuration=file:$LOG4JPROPS -cp $CLASSPATH org.clazzes.odtransform.OdtTransform $STYLESHEET ${1:+"$@"}
+exec $JAVA_CMD -Dlog4j.configuration=file:$LOG4JPROPS -cp $CLASSPATH org.clazzes.odtransform.OdtTransform $STYLESHEET ${1:+"$@"}
