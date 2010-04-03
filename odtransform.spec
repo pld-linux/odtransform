@@ -1,16 +1,21 @@
 #
 # Conditional build:
-%bcond_with	java_sun	# use Sun JDK
-#
-%define		snap	19
+%if "%{pld_release}" == "ti"
+%bcond_without	java_sun	# build with gcj
+%else
+%bcond_with	java_sun	# build with java-sun
+%endif
+
 %include	/usr/lib/rpm/macros.java
+
+%define		snap	19
 Summary:	OpenDocument to XML FOP converter
 Summary(pl.UTF-8):	Konwerter plików OpenDocument do formatu XML FOP
 Name:		odtransform
 Version:	0.1.0
 Release:	0.%{snap}.2
 License:	Apache v2.0 (odtransform) + LGPL v2.1 (ooo2xslfo.xslt)
-Group:		Development/Languages/Java
+Group:		Applications/Publishing/XML/Java
 Source0:	%{name}-%{version}-r%{snap}.tar.bz2
 # Source0-md5:	e040305ffa4ed336711536d6cf092831
 Source1:	%{name}.sh
