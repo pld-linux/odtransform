@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	Konwerter plików OpenDocument do formatu XML FOP
 Name:		odtransform
 Version:	0.1.0
 Release:	0.%{snap}.1
-License:	Apache v2.0
+License:	Apache v2.0 (odtransform) + LGPL v2.1 (ooo2xslfo.xslt)
 Group:		Development/Languages/Java
 Source0:	%{name}-%{version}-r%{snap}.tar.bz2
 # Source0-md5:	e040305ffa4ed336711536d6cf092831
@@ -26,9 +26,9 @@ BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	java-commons-logging
-Requires:	jpackage-utils
 # Yes, it is R but it is not BR
-Requires:	xalan-j
+Requires:	java-xalan
+Requires:	jpackage-utils
 Suggests:	fop
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -41,7 +41,7 @@ fop.
 %description -l pl.UTF-8
 Proste, napisane w Javie narzędzie służące do konwersji plików w
 formacie OpenDocument do plików XML FOP. Pliki wynikowe można
-przekonwertować do wielu różnych formatów (jak PS czy PD) przy użyciu
+przekonwertować do wielu różnych formatów (jak PS czy PDF) przy użyciu
 programu fop.
 
 %prep
