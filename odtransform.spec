@@ -1,6 +1,5 @@
 #
 # Conditional build:
-%include	/usr/lib/rpm/macros.java
 
 %define		snap	19
 Summary:	OpenDocument to XML FOP converter
